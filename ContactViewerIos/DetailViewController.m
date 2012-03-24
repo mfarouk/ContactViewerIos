@@ -7,40 +7,46 @@
 //
 
 #import "DetailViewController.h"
+#import "EditViewController.h"
 
-@interface DetailViewController ()
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
-- (void)configureView;
-@end
 
 @implementation DetailViewController
+@synthesize detailItem_name = _detailItem_name;
+@synthesize detailItem_title = _detailItem_title;
+@synthesize detailItem_email = _detailItem_email;
+@synthesize detailItem_phone = _detailItem_phone;
+@synthesize detailItem_twitterId = _detailItem_twitterId;
 
-@synthesize detailItem = _detailItem;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
-@synthesize masterPopoverController = _masterPopoverController;
+
+@synthesize detailDescriptionLabel_name = _detailDescriptionLabel_name;
+@synthesize detailDescriptionLabel_title = _detailDescriptionLabel_title;
+@synthesize detailDescriptionLabel_email = _detailDescriptionLabel_email;
+@synthesize detailDescriptionLabel_phone = _detailDescriptionLabel_phone;
+@synthesize detailDescriptionLabel_twitterId = _detailDescriptionLabel_twitterId;
+
+
+@synthesize contact = _contact;
 
 #pragma mark - Managing the detail item
-
-- (void)setDetailItem:(id)newDetailItem
+- (void)setDetailItem_name:(id)newDetailItem
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
+    if (_detailItem_name != newDetailItem) {
+        _detailItem_name = newDetailItem;        
     }
-
-    if (self.masterPopoverController != nil) {
-        [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
 }
 
-- (void)configureView
+- (void)setDetailItem_title:(id)newDetailItem
 {
-    // Update the user interface for the detail item.
+    if (_detailItem_title != newDetailItem) {
+        _detailItem_title = newDetailItem;        
+    }
+}
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+- (void)setDetailItem_email:(id)newDetailItem
+{
+    if (_detailItem_phone != newDetailItem){
+        _detailItem_phone = newDetailItem;
+    
     }
 }
 
@@ -52,12 +58,11 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+/*- (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
-}
+}*/
 
 - (void)viewDidUnload
 {
@@ -65,26 +70,45 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+- (IBAction)EditButton:(id)sender {
+    
+    EditViewController *tempView = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
+    
+    [tempView setContact:self.contact];
+    
+    [self.navigationController pushViewController:tempView animated:YES];
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (_contact) {
+        
+        self.detailDescriptionLabel_name.text = _contact.name;
+        self.detailDescriptionLabel_title.text = _contact.title;
+        self.detailDescriptionLabel_email.text = _contact.email;
+        self.detailDescriptionLabel_phone.text = _contact.phone;
+        self.detailDescriptionLabel_twitterId.text = _contact.twitterId;
+        
+    }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+/*- (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
+}*/
 
-- (void)viewWillDisappear:(BOOL)animated
+/* (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-}
+}*/
 
-- (void)viewDidDisappear:(BOOL)animated
+/*- (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-}
+}*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -102,14 +126,15 @@
 {
     barButtonItem.title = NSLocalizedString(@"Master", @"Master");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-    self.masterPopoverController = popoverController;
+
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    self.masterPopoverController = nil;
+
 }
+
 
 @end
