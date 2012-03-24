@@ -20,8 +20,8 @@
 - (void)awakeFromNib
 {
     // get the contact list
-    [ContactList initSingleton];
-    contacts = [ContactList singleton];
+    [ContactRepository initSingleton];
+    contacts = [ContactRepository singleton];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.clearsSelectionOnViewWillAppear = NO;
