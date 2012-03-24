@@ -18,9 +18,9 @@
 
 
 -(id)initWithName:(NSString*)name 
-        andPhone:(NSString*)phone
-        andTitle:(NSString*)title 
-        andEmail:(NSString*)email
-        andTwitterId:(NSString*)twitterId;
+         andPhone:(NSString*)phone
+         andTitle:(NSString*)title 
+         andEmail:(NSString*)email
+     andTwitterId:(NSString*)twitterId;
 
 @end

@@ -46,7 +46,7 @@
 {
     if (_detailItem_phone != newDetailItem){
         _detailItem_phone = newDetailItem;
-    
+        
     }
 }
 
@@ -59,10 +59,10 @@
 #pragma mark - View lifecycle
 
 /*- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}*/
+ {
+ [super viewDidLoad];
+ // Do any additional setup after loading the view, typically from a nib.
+ }*/
 
 - (void)viewDidUnload
 {
@@ -96,19 +96,19 @@
 }
 
 /*- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}*/
+ {
+ [super viewDidAppear:animated];
+ }*/
 
 /* (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}*/
+ {
+ [super viewWillDisappear:animated];
+ }*/
 
 /*- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}*/
+ {
+ [super viewDidDisappear:animated];
+ }*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -126,14 +126,14 @@
 {
     barButtonItem.title = NSLocalizedString(@"Master", @"Master");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-
+    
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-
+    
 }
 
 

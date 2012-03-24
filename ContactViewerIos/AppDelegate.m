@@ -27,12 +27,12 @@
     NSString *path = [docsPath stringByAppendingPathComponent:@"database.sqlite"];
     
     //FMDatabase *database = [FMDatabase databaseWithPath:path];
-
+    
     
     
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

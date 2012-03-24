@@ -13,10 +13,10 @@
 @synthesize name, title, email, phone, twitterId;
 
 -(id)initWithName:(NSString*)newName 
-        andPhone:(NSString*)newPhone
-        andTitle:(NSString*)newTitle 
-        andEmail:(NSString*)newEmail
-        andTwitterId:(NSString*)newTwitterId {
+         andPhone:(NSString*)newPhone
+         andTitle:(NSString*)newTitle 
+         andEmail:(NSString*)newEmail
+     andTwitterId:(NSString*)newTwitterId {
     
     self = [super init];
     

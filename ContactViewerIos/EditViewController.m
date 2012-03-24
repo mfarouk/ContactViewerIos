@@ -44,10 +44,10 @@
     
     NSString *uuid = [[NSProcessInfo processInfo] globallyUniqueString];
     NSLog(@"The Unique ID is %@", uuid);
-
-   /* EditViewController *tempView = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
     
-    [tempView setContact:self.contact];*/
+    /* EditViewController *tempView = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
+     
+     [tempView setContact:self.contact];*/
     
     //[self.navigationController pushViewController:tempView animated:YES];
     
