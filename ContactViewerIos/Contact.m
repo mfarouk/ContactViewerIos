@@ -16,8 +16,8 @@
          andPhone:(NSString*)newPhone
          andTitle:(NSString*)newTitle 
          andEmail:(NSString*)newEmail
-     andTwitterId:(NSString*)newTwitterId {
-    
+     andTwitterId:(NSString*)newTwitterId 
+{    
     self = [super init];
     
     self.name = newName;

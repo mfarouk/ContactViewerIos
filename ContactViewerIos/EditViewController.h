@@ -22,7 +22,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *phoneField;
 @property (strong, nonatomic) IBOutlet UITextField *twitterIdField;
 
--(void)setContact:(Contact *)newcontact;
 -(IBAction)DoneButton:(id)sender;
 
 

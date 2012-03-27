@@ -20,8 +20,7 @@
 		A1523E561507C4CC00AAD412 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1523E551507C4CC00AAD412 /* MasterViewController.m */; };
 		A1523E591507C4CC00AAD412 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1523E581507C4CC00AAD412 /* DetailViewController.m */; };
 		A1523E611507D37A00AAD412 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = A1523E601507D37A00AAD412 /* Contact.m */; };
-		A17B9CE81507DB7D00DE386B /* ContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = A17B9CE71507DB7D00DE386B /* ContactList.m */; };
-		A1D5BD48150A57FD0091D46D /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D5BD47150A57FD0091D46D /* MyClass.m */; };
+		A17B9CE81507DB7D00DE386B /* ContactRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = A17B9CE71507DB7D00DE386B /* ContactRepository.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,10 +45,8 @@
 		A1523E581507C4CC00AAD412 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		A1523E5F1507D37A00AAD412 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		A1523E601507D37A00AAD412 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
-		A17B9CE61507DB7D00DE386B /* ContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactList.h; sourceTree = "<group>"; };
-		A17B9CE71507DB7D00DE386B /* ContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactList.m; sourceTree = "<group>"; };
-		A1D5BD46150A57FD0091D46D /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
-		A1D5BD47150A57FD0091D46D /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		A17B9CE61507DB7D00DE386B /* ContactRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactRepository.h; sourceTree = "<group>"; };
+		A17B9CE71507DB7D00DE386B /* ContactRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactRepository.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +108,8 @@
 				A1523E431507C4CC00AAD412 /* Supporting Files */,
 				A1523E5F1507D37A00AAD412 /* Contact.h */,
 				A1523E601507D37A00AAD412 /* Contact.m */,
-				A17B9CE61507DB7D00DE386B /* ContactList.h */,
-				A17B9CE71507DB7D00DE386B /* ContactList.m */,
-				A1D5BD46150A57FD0091D46D /* MyClass.h */,
-				A1D5BD47150A57FD0091D46D /* MyClass.m */,
+				A17B9CE61507DB7D00DE386B /* ContactRepository.h */,
+				A17B9CE71507DB7D00DE386B /* ContactRepository.m */,
 			);
 			path = ContactViewerIos;
 			sourceTree = "<group>";
@@ -199,8 +194,7 @@
 				A1523E561507C4CC00AAD412 /* MasterViewController.m in Sources */,
 				A1523E591507C4CC00AAD412 /* DetailViewController.m in Sources */,
 				A1523E611507D37A00AAD412 /* Contact.m in Sources */,
-				A17B9CE81507DB7D00DE386B /* ContactList.m in Sources */,
-				A1D5BD48150A57FD0091D46D /* MyClass.m in Sources */,
+				A17B9CE81507DB7D00DE386B /* ContactRepository.m in Sources */,
 				13F328941518FFAD007EC175 /* EditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "Contact.h"
 
 @interface ContactRepository : NSObject

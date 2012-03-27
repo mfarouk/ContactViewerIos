@@ -16,7 +16,6 @@
 @property(retain) NSString* email;
 @property(retain) NSString* twitterId;
 
-
 -(id)initWithName:(NSString*)name 
          andPhone:(NSString*)phone
          andTitle:(NSString*)title 

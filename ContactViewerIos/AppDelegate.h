@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ContactList.h"
+#import "ContactRepository.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

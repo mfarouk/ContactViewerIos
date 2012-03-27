@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "ContactRepository.h"
 
 @class DetailViewController;
@@ -15,7 +14,6 @@
 @interface MasterViewController : UITableViewController <UITableViewDataSource>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
-
 @property (strong, nonatomic) ContactRepository* contacts;
 
 // this gets called when the user taps the plus button above the list

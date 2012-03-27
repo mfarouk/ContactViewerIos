@@ -22,14 +22,12 @@
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsPath = [paths objectAtIndex:0];
-    NSString *path = [docsPath stringByAppendingPathComponent:@"database.sqlite"];
+    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString *docsPath = [paths objectAtIndex:0];
+    //NSString *path = [docsPath stringByAppendingPathComponent:@"database.sqlite"];
     
     //FMDatabase *database = [FMDatabase databaseWithPath:path];
-    
-    
-    
+
     return YES;
 }
 

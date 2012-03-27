@@ -7,9 +7,7 @@
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
-
 #import "Contact.h"
 
 @implementation MasterViewController
@@ -90,25 +88,31 @@
 
 #pragma mark - Table View Data Source
 
--(IBAction)onAddContact:(id)sender {
+-(IBAction)onAddContact:(id)sender 
+{
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"New Contact"
                                                     message:@"You need to do something here"
-                                                   delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"Okay" 
+                                          otherButtonTitles: nil];
     [alert show];
 }
 
 
 #pragma mark - Table View Data Source
 
--(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
     return [contacts count];
 }
 
--(int)numberOfSectionsInTableView:(UITableView *)tableView {
+-(int)numberOfSectionsInTableView:(UITableView *)tableView 
+{
     return 1;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
     // get or create the cell
     static NSString *CellIdentifier = @"ContactCell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -127,7 +131,8 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
     
     if (self.detailViewController == nil) {
         self.detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail"];

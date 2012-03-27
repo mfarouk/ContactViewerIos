@@ -17,42 +17,42 @@ static ContactRepository* _singleton = nil;
 NSFileManager *fm;
 NSString *data;
 
-
--(id)initWithCapacity:(NSInteger)capacity {
+-(id)initWithCapacity:(NSInteger)capacity 
+{
     self = [super init];
     _contacts = [[NSMutableArray alloc] initWithCapacity:capacity];
     return self;
 }
 
--(void)persistContact:(Contact*)contactToSave{
-    
-    
-    
+-(void)persistContact:(Contact*)contactToSave
+{
     fm = [NSFileManager defaultManager];
     data = @"This is the contents of the file";
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
     NSString *docDir = [paths objectAtIndex:0];
     NSString *filePath = [docDir stringByAppendingPathComponent:@"ContactsFile.txt"];
-    if([fm fileExistsAtPath:filePath]){
+    
+    if ([fm fileExistsAtPath:filePath]) {
         //Load the file
         /*    [textView setText:[NSString stringwithContectOfFile:filePath encoding:NSUTF8StringEncoding error:nil];*/
     }
     else {
         NSLog(@"File Doesn't Exist");
-        [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-        
-        
+        [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];   
     }
 }
-/*-(void)retrieveContact:(Contact*)contactToLoad{
- fm = [NSFileManager defaultManager];
- if([fm fileExistsAtPath:filePath]){
- //[textView setText:[NSString stringwithContenctof 
- }
- }*/
 
-+(void)initSingleton {
+/*-(void)retrieveContact:(Contact*)contactToLoad
+{
+    fm = [NSFileManager defaultManager];
+    if([fm fileExistsAtPath:filePath]){
+    //[textView setText:[NSString stringwithContenctof 
+    }
+}*/
+
++(void)initSingleton 
+{
     _singleton = [[ContactRepository alloc] initWithCapacity:8];
     
     [_singleton addContact:[[Contact alloc] initWithName:@"Malcom Reynolds"
@@ -97,23 +97,28 @@ NSString *data;
                                             andTwitterId:@"shepherdbook"]];
 }
 
--(void)addContact:(Contact*)contact {
+-(void)addContact:(Contact*)contact 
+{
     [_contacts addObject:contact];
 }
 
--(void)removeContact:(Contact*)contact {
+-(void)removeContact:(Contact*)contact 
+{
     [_contacts removeObject:contact];
 }
 
--(Contact*)contactAtIndex:(NSInteger)index {
+-(Contact*)contactAtIndex:(NSInteger)index 
+{
     return [_contacts objectAtIndex:index];
 }
 
-+(ContactRepository*)singleton {
++(ContactRepository*)singleton 
+{
     return _singleton;
 }
 
--(NSInteger)count {
+-(NSInteger)count 
+{
     return [_contacts count];
 }
 
