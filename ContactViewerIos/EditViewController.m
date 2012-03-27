@@ -17,6 +17,7 @@
 @synthesize emailField;
 @synthesize twitterIdField;
 @synthesize detailViewController = _detailViewController;
+@synthesize editScrollView = _editScrollView;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -29,12 +30,16 @@
     }
 }
 
-- (IBAction)DoneButton:(id)sender {
-    NSString *uuid = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSLog(@"The Unique ID is %@", uuid);
-    /* EditViewController *tempView = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
-     [tempView setContact:self.contact];*/
-    //[self.navigationController pushViewController:tempView animated:YES];
+- (void)viewDidLoad {
+    [_editScrollView setContentSize:CGSizeMake(320, 600)];
+}
+
+- (IBAction)doneButtonPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)deleteButtonPressed:(id)sender {
+    
 }
 
 @end

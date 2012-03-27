@@ -22,8 +22,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *phoneField;
 @property (strong, nonatomic) IBOutlet UITextField *twitterIdField;
 
--(IBAction)DoneButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UIScrollView *editScrollView;
 
+-(IBAction)doneButtonPressed:(id)sender;
 
+-(IBAction)deleteButtonPressed:(id)sender;
 
 @end

@@ -10,41 +10,16 @@
 #import "EditViewController.h"
 
 @implementation DetailViewController
-@synthesize detailItem_name = _detailItem_name;
-@synthesize detailItem_title = _detailItem_title;
-@synthesize detailItem_email = _detailItem_email;
-@synthesize detailItem_phone = _detailItem_phone;
-@synthesize detailItem_twitterId = _detailItem_twitterId;
 
-@synthesize detailDescriptionLabel_name = _detailDescriptionLabel_name;
-@synthesize detailDescriptionLabel_title = _detailDescriptionLabel_title;
-@synthesize detailDescriptionLabel_email = _detailDescriptionLabel_email;
-@synthesize detailDescriptionLabel_phone = _detailDescriptionLabel_phone;
-@synthesize detailDescriptionLabel_twitterId = _detailDescriptionLabel_twitterId;
+@synthesize detailNameField = _detailDescriptionLabel_name;
+@synthesize detailTitleField = _detailDescriptionLabel_title;
+@synthesize detailEmailField = _detailDescriptionLabel_email;
+@synthesize detailPhoneField = _detailDescriptionLabel_phone;
+@synthesize detailTwitterIdField = _detailDescriptionLabel_twitterId;
+
+@synthesize detailScrollView = _detailScrollView;
 
 @synthesize contact = _contact;
-
-#pragma mark - Managing the detail item
-- (void)setDetailItem_name:(id)newDetailItem 
-{
-    if (_detailItem_name != newDetailItem) {
-        _detailItem_name = newDetailItem;        
-    }
-}
-
-- (void)setDetailItem_title:(id)newDetailItem 
-{
-    if (_detailItem_title != newDetailItem) {
-        _detailItem_title = newDetailItem;        
-    }
-}
-
-- (void)setDetailItem_email:(id)newDetailItem 
-{
-    if (_detailItem_phone != newDetailItem) {
-        _detailItem_phone = newDetailItem;
-    }
-}
 
 - (void)didReceiveMemoryWarning 
 {
@@ -53,11 +28,13 @@
 }
 
 #pragma mark - View lifecycle
-/*- (void)viewDidLoad
- {
- [super viewDidLoad];
- // Do any additional setup after loading the view, typically from a nib.
- }*/
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    [_detailScrollView setContentSize:CGSizeMake(320, 800)];
+}
 
 - (void)viewDidUnload
 {
@@ -66,22 +43,22 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (IBAction)EditButton:(id)sender 
+- (IBAction)editButtonPressed:(id)sender 
 {
-    EditViewController *tempView = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
-    [tempView setContact:self.contact];
-    [self.navigationController pushViewController:tempView animated:YES];
+    EditViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
+    [editViewController setContact:self.contact];
+    [self.navigationController pushViewController:editViewController animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated 
 {
     [super viewWillAppear:animated];
     if (_contact) {
-        self.detailDescriptionLabel_name.text = _contact.name;
-        self.detailDescriptionLabel_title.text = _contact.title;
-        self.detailDescriptionLabel_email.text = _contact.email;
-        self.detailDescriptionLabel_phone.text = _contact.phone;
-        self.detailDescriptionLabel_twitterId.text = _contact.twitterId;
+        self.detailNameField.text = _contact.name;
+        self.detailTitleField.text = _contact.title;
+        self.detailEmailField.text = _contact.email;
+        self.detailPhoneField.text = _contact.phone;
+        self.detailTwitterIdField.text = _contact.twitterId;
     }
 }
 

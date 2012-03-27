@@ -10,7 +10,7 @@
 
 @implementation Contact
 
-@synthesize name, title, email, phone, twitterId;
+@synthesize uuid, name, title, email, phone, twitterId;
 
 -(id)initWithName:(NSString*)newName 
          andPhone:(NSString*)newPhone
@@ -20,6 +20,8 @@
 {    
     self = [super init];
     
+    NSString *newUuid = [[NSProcessInfo processInfo] globallyUniqueString];
+    self.uuid = newUuid;
     self.name = newName;
     self.phone = newPhone;
     self.title = newTitle;
