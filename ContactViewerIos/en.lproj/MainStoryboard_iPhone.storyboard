@@ -265,6 +265,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteButtonPressed:" destination="vGB-jt-qwk" eventType="touchUpInside" id="fTf-gu-cYY"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="cMc-kf-GMv">
                                         <rect key="frame" x="91" y="122" width="187" height="31"/>

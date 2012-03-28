@@ -42,11 +42,6 @@
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
-{
-    return NO;
-}
-
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController*)splitController 

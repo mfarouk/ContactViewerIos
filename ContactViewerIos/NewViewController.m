@@ -30,6 +30,22 @@
     newContact.email = _emailField.text;
     newContact.twitterId = _twitterIdField.text;
     
+    if (newContact.name == nil) {
+        newContact.name = @"";
+    }
+    if (newContact.title == nil) {
+        newContact.title = @"";
+    }
+    if (newContact.phone == nil) {
+        newContact.phone = @"";
+    }
+    if (newContact.email == nil) {
+        newContact.email = @"";
+    }
+    if (newContact.twitterId == nil) {
+        newContact.twitterId = @"";
+    }
+    
     [[ContactRepository singleton] updateContact:newContact];
     
     _nameField.text = nil;

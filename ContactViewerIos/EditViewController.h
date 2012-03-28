@@ -10,7 +10,7 @@
 #import "Contact.h"
 #import "DetailViewController.h"
 
-@interface EditViewController : UIViewController <UISplitViewControllerDelegate>
+@interface EditViewController : UIViewController <UISplitViewControllerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) Contact* contact;
 

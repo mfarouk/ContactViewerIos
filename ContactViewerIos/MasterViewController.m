@@ -29,11 +29,6 @@ static NSString* CONTACT_CELL_ID = @"CONTACT_CELL_ID";
     [self.tableView reloadData];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return NO;
-}
-
 #pragma mark - Table View Data Source
 
 -(int)numberOfSectionsInTableView:(UITableView*)tableView 
