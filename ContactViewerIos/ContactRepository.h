@@ -11,23 +11,20 @@
 
 @interface ContactRepository : NSObject
 
-// initializes the singleton instance
-+(void)initSingleton;
-
 +(ContactRepository*)singleton;
 
--(id)initWithCapacity:(NSInteger)capacity;
+-(Contact*)createContact;
 
--(NSInteger)count;
+-(Contact*)readContact:(NSString*)uuid;
 
--(void)addContact:(Contact*)contact;
+-(void)updateContact:(Contact*)contact;
 
--(void)removeContact:(Contact*)contact;
+-(void)deleteContact:(Contact*)contact;
 
--(Contact*)contactAtIndex:(NSInteger)index;
+-(void)commit;
 
-@property(strong) NSMutableArray* allContacts;
+-(NSArray*)sortedContacts;
 
-//-(void)persistContact:(Contact*)contactToSave;
+@property(strong) NSMutableDictionary* database;
 
 @end

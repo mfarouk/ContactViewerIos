@@ -8,19 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "Contact.h"
+#import "ContactRepository.h"
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) Contact* contact;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *detailScrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView* detailScrollView;
 
-@property (strong, nonatomic) IBOutlet UILabel *detailNameField;
-@property (strong, nonatomic) IBOutlet UILabel *detailTitleField;
-@property (strong, nonatomic) IBOutlet UILabel *detailEmailField;
-@property (strong, nonatomic) IBOutlet UILabel *detailPhoneField;
-@property (strong, nonatomic) IBOutlet UILabel *detailTwitterIdField;
+@property (strong, nonatomic) IBOutlet UILabel* detailNameField;
+@property (strong, nonatomic) IBOutlet UILabel* detailTitleField;
+@property (strong, nonatomic) IBOutlet UILabel* detailEmailField;
+@property (strong, nonatomic) IBOutlet UILabel* detailPhoneField;
+@property (strong, nonatomic) IBOutlet UILabel* detailTwitterIdField;
 
-- (IBAction)editButtonPressed:(id)sender;
+- (IBAction)onEditContact:(id)sender;
 
 @end

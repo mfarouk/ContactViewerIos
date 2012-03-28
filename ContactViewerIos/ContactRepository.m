@@ -9,117 +9,71 @@
 #import "ContactRepository.h"
 
 static ContactRepository* _singleton = nil;
+static NSString* DATABASE_FILE_PATH = nil;
 
 @implementation ContactRepository
 
-@synthesize allContacts=_contacts;
-
-NSFileManager *fm;
-NSString *data;
-
--(id)initWithCapacity:(NSInteger)capacity 
-{
-    self = [super init];
-    _contacts = [[NSMutableArray alloc] initWithCapacity:capacity];
-    return self;
-}
-
--(void)persistContact:(Contact*)contactToSave
-{
-    fm = [NSFileManager defaultManager];
-    data = @"This is the contents of the file";
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
-    NSString *docDir = [paths objectAtIndex:0];
-    NSString *filePath = [docDir stringByAppendingPathComponent:@"ContactsFile.txt"];
-    
-    if ([fm fileExistsAtPath:filePath]) {
-        //Load the file
-        /*    [textView setText:[NSString stringwithContectOfFile:filePath encoding:NSUTF8StringEncoding error:nil];*/
-    }
-    else {
-        NSLog(@"File Doesn't Exist");
-        [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];   
-    }
-}
-
-/*-(void)retrieveContact:(Contact*)contactToLoad
-{
-    fm = [NSFileManager defaultManager];
-    if([fm fileExistsAtPath:filePath]){
-    //[textView setText:[NSString stringwithContenctof 
-    }
-}*/
-
-+(void)initSingleton 
-{
-    _singleton = [[ContactRepository alloc] initWithCapacity:8];
-    
-    [_singleton addContact:[[Contact alloc] initWithName:@"Malcom Reynolds"
-                                                andPhone:@"612-555-1234"
-                                                andTitle:@"Captain"
-                                                andEmail:@"mal@serenity.com"
-                                            andTwitterId:@"malcomreynolds"]];
-    [_singleton addContact:[[Contact alloc] initWithName:@"Zoe Washburne"
-                                                andPhone:@"612-555-5678"
-                                                andTitle:@"First Mate"
-                                                andEmail:@"zoe@serenity.com"
-                                            andTwitterId:@"zoewashburne"]];
-    [_singleton addContact:[[Contact alloc] initWithName:@"Hoban Washburne"
-                                                andPhone:@"612-555-9012"
-                                                andTitle:@"Pilot"
-                                                andEmail:@"wash@serenity.com"
-                                            andTwitterId:@"wash"]];
-    [_singleton addContact:[[Contact alloc] initWithName:@"Jayne Cobb"
-                                                andPhone:@"612-555-1234"
-                                                andTitle:@"Muscle"
-                                                andEmail:@"jayne@serenity.com"
-                                            andTwitterId:@"heroofcanton"]];
-    [_singleton addContact:[[Contact alloc] initWithName:@"Kaylee Frye"
-                                                andPhone:@"612-555-7890"
-                                                andTitle:@"Engineer"
-                                                andEmail:@"kaylee@serenity.com"
-                                            andTwitterId:@"kaylee"]];
-    [_singleton addContact:[[Contact alloc] initWithName:@"Simon Tam"
-                                                andPhone:@"612-555-4321"
-                                                andTitle:@"Doctor"
-                                                andEmail:@"simon@serenity.com"
-                                            andTwitterId:@"simontam"]];
-    [_singleton addContact:[[Contact alloc] initWithName:@"River Tam"
-                                                andPhone:@"612-555-8765"
-                                                andTitle:@"Doctor's Sister"
-                                                andEmail:@"river@serenity.com"
-                                            andTwitterId:@"miranda"]];
-    [_singleton addContact:[[Contact alloc] initWithName:@"Shepherd Book"
-                                                andPhone:@"612-555-2109"
-                                                andTitle:@"Shepherd"
-                                                andEmail:@"shepherd@serenity.com"
-                                            andTwitterId:@"shepherdbook"]];
-}
-
--(void)addContact:(Contact*)contact 
-{
-    [_contacts addObject:contact];
-}
-
--(void)removeContact:(Contact*)contact 
-{
-    [_contacts removeObject:contact];
-}
-
--(Contact*)contactAtIndex:(NSInteger)index 
-{
-    return [_contacts objectAtIndex:index];
-}
+@synthesize database = _database;
 
 +(ContactRepository*)singleton 
 {
+    if (_singleton == nil) {
+        DATABASE_FILE_PATH = [NSString stringWithFormat:@"%@/database.plist", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]];
+        _singleton = [[ContactRepository alloc] init];
+    }
     return _singleton;
 }
 
--(NSInteger)count 
+-(id)init
 {
-    return [_contacts count];
+    NSData* rawData = [[NSFileManager defaultManager] contentsAtPath:DATABASE_FILE_PATH];
+    if (rawData == nil) {
+        _database = [[NSMutableDictionary alloc] init];
+        [self commit];
+    }
+    else {
+        _database = [NSKeyedUnarchiver unarchiveObjectWithData:rawData];
+    }
+    return self;
+}
+
+-(Contact*)createContact 
+{
+    NSString* newUuid = [[NSProcessInfo processInfo] globallyUniqueString];
+    Contact* newContact = [[Contact alloc] initWithId:newUuid];
+    [self updateContact:newContact];
+    return newContact;
+}
+
+-(Contact*)readContact:(NSString*)uuid 
+{
+    return [_database objectForKey:uuid];
+}
+
+-(void)updateContact:(Contact*)contact 
+{
+    if (contact != nil) {
+        [_database setObject:contact forKey:[contact uuid]];
+        [self commit];
+    }
+}
+
+-(void)deleteContact:(Contact*)contact 
+{
+    [_database removeObjectForKey:[contact uuid]];
+    [self commit];
+}
+
+-(void)commit 
+{
+    NSData* rawData = [NSKeyedArchiver archivedDataWithRootObject:_database];
+    BOOL result = [rawData writeToFile:DATABASE_FILE_PATH atomically:YES];
+    NSLog(@"Commit: %@", result ? @"YES" : @"NO");
+}
+
+-(NSArray*)sortedContacts 
+{
+    return [[_database allValues] sortedArrayUsingSelector:@selector(compare:)];
 }
 
 @end

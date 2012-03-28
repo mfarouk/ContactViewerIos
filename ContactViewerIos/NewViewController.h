@@ -9,12 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Contact.h"
 #import "DetailViewController.h"
+#import "ContactRepository.h"
 
-@interface EditViewController : UIViewController <UISplitViewControllerDelegate>
-
-@property (strong, nonatomic) Contact* contact;
-
-@property (strong, nonatomic) DetailViewController* detailViewController;
+@interface NewViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField* nameField;
 @property (strong, nonatomic) IBOutlet UITextField* titleField;
@@ -22,10 +19,10 @@
 @property (strong, nonatomic) IBOutlet UITextField* phoneField;
 @property (strong, nonatomic) IBOutlet UITextField* twitterIdField;
 
-@property (strong, nonatomic) IBOutlet UIScrollView* editScrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView* scrollView;
 
--(IBAction)doneButtonPressed:(id)sender;
+-(IBAction)onDone:(id)sender;
 
--(IBAction)deleteButtonPressed:(id)sender;
+-(IBAction)onCancel:(id)sender;
 
 @end

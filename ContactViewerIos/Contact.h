@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Contact : NSObject
+@interface Contact : NSObject <NSCoding>
 
 @property(retain) NSString* uuid;
 @property(retain) NSString* name;
@@ -17,10 +17,6 @@
 @property(retain) NSString* email;
 @property(retain) NSString* twitterId;
 
--(id)initWithName:(NSString*)name 
-         andPhone:(NSString*)phone
-         andTitle:(NSString*)title 
-         andEmail:(NSString*)email
-     andTwitterId:(NSString*)twitterId;
+-(id)initWithId:(NSString*)uuid;
 
 @end

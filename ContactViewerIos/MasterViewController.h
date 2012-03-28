@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailViewController.h"
+#import "NewViewController.h"
+#import "Contact.h"
 #import "ContactRepository.h"
 
 @class DetailViewController;
 
 @interface MasterViewController : UITableViewController <UITableViewDataSource>
 
-@property (strong, nonatomic) DetailViewController *detailViewController;
-@property (strong, nonatomic) ContactRepository* contacts;
+@property (strong, nonatomic) DetailViewController* detailViewController;
+@property (strong, nonatomic) NewViewController* nwViewController;
 
-// this gets called when the user taps the plus button above the list
--(IBAction)onAddContact:(id)sender;
+-(IBAction)onNewContact:(id)sender;
 
 @end

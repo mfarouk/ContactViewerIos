@@ -21,39 +21,19 @@
 
 @synthesize contact = _contact;
 
-- (void)didReceiveMemoryWarning 
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     [_detailScrollView setContentSize:CGSizeMake(320, 800)];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (IBAction)editButtonPressed:(id)sender 
-{
-    EditViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
-    [editViewController setContact:self.contact];
-    [self.navigationController pushViewController:editViewController animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated 
 {
     [super viewWillAppear:animated];
     if (_contact) {
+        _contact = [[ContactRepository singleton] readContact:[_contact uuid]];
         self.detailNameField.text = _contact.name;
         self.detailTitleField.text = _contact.title;
         self.detailEmailField.text = _contact.email;
@@ -62,38 +42,17 @@
     }
 }
 
-/*- (void)viewDidAppear:(BOOL)animated
- {
- [super viewDidAppear:animated];
- }*/
-
-/* (void)viewWillDisappear:(BOOL)animated
- {
- [super viewWillDisappear:animated];
- }*/
-
-/*- (void)viewDidDisappear:(BOOL)animated
- {
- [super viewDidDisappear:animated];
- }*/
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } 
-    else {
-        return YES;
-    }
+    return NO;
 }
 
 #pragma mark - Split view
 
-- (void)splitViewController:(UISplitViewController *)splitController 
-     willHideViewController:(UIViewController *)viewController 
-          withBarButtonItem:(UIBarButtonItem *)barButtonItem 
-       forPopoverController:(UIPopoverController *)popoverController 
+- (void)splitViewController:(UISplitViewController*)splitController 
+     willHideViewController:(UIViewController*)viewController 
+          withBarButtonItem:(UIBarButtonItem*)barButtonItem 
+       forPopoverController:(UIPopoverController*)popoverController 
 {
     barButtonItem.title = NSLocalizedString(@"Master", @"Master");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
@@ -105,6 +64,15 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     
+}
+
+#pragma mark - Outlets
+
+- (IBAction)onEditContact:(id)sender 
+{
+    EditViewController* editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Edit"];
+    [editViewController setContact:_contact];
+    [self.navigationController pushViewController:editViewController animated:YES];
 }
 
 

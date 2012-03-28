@@ -11,22 +11,23 @@
 @implementation EditViewController
 
 @synthesize contact = _contact;
-@synthesize nameField;
-@synthesize titleField;
-@synthesize phoneField;
-@synthesize emailField;
-@synthesize twitterIdField;
+@synthesize nameField = _nameField;
+@synthesize titleField = _titleField;
+@synthesize phoneField = _phoneField;
+@synthesize emailField = _emailField;
+@synthesize twitterIdField = _twitterIdField;
 @synthesize detailViewController = _detailViewController;
 @synthesize editScrollView = _editScrollView;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (_contact) {
-        self.nameField.text = _contact.name;
-        self.titleField.text = _contact.title;
-        self.phoneField.text = _contact.phone;
-        self.emailField.text = _contact.email;
-        self.twitterIdField.text = _contact.twitterId;
+        _contact = [[ContactRepository singleton] readContact:[_contact uuid]];
+        _nameField.text = _contact.name;
+        _titleField.text = _contact.title;
+        _phoneField.text = _contact.phone;
+        _emailField.text = _contact.email;
+        _twitterIdField.text = _contact.twitterId;
     }
 }
 
@@ -35,11 +36,19 @@
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
+    _contact.name = _nameField.text;
+    _contact.title = _titleField.text;
+    _contact.phone = _phoneField.text;
+    _contact.email = _emailField.text;
+    _contact.twitterId = _twitterIdField.text;
+    
+    [[ContactRepository singleton] updateContact:_contact];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)deleteButtonPressed:(id)sender {
-    
+    //TODO alert and persistence
 }
 
 @end

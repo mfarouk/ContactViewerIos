@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		138BC0A3151CF18200E2C839 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 138BC0A2151CF18200E2C839 /* libsqlite3.0.dylib */; };
 		13F328941518FFAD007EC175 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F328931518FFAD007EC175 /* EditViewController.m */; };
+		263DD397152298A400B24C11 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263DD396152298A400B24C11 /* NewViewController.m */; };
 		A1523E3D1507C4CC00AAD412 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1523E3C1507C4CC00AAD412 /* UIKit.framework */; };
 		A1523E3F1507C4CC00AAD412 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1523E3E1507C4CC00AAD412 /* Foundation.framework */; };
 		A1523E411507C4CC00AAD412 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1523E401507C4CC00AAD412 /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 		138BC0A2151CF18200E2C839 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		13F328921518FFAD007EC175 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		13F328931518FFAD007EC175 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		263DD395152298A300B24C11 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		263DD396152298A400B24C11 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		A1523E381507C4CC00AAD412 /* ContactViewerIos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactViewerIos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1523E3C1507C4CC00AAD412 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1523E3E1507C4CC00AAD412 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,6 +96,8 @@
 		A1523E421507C4CC00AAD412 /* ContactViewerIos */ = {
 			isa = PBXGroup;
 			children = (
+				263DD395152298A300B24C11 /* NewViewController.h */,
+				263DD396152298A400B24C11 /* NewViewController.m */,
 				A1523E4B1507C4CC00AAD412 /* AppDelegate.h */,
 				A1523E4C1507C4CC00AAD412 /* AppDelegate.m */,
 				A1523E4E1507C4CC00AAD412 /* MainStoryboard_iPhone.storyboard */,
@@ -192,6 +197,7 @@
 				A1523E611507D37A00AAD412 /* Contact.m in Sources */,
 				A17B9CE81507DB7D00DE386B /* ContactRepository.m in Sources */,
 				13F328941518FFAD007EC175 /* EditViewController.m in Sources */,
+				263DD397152298A400B24C11 /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

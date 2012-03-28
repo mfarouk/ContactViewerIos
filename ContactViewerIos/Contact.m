@@ -10,23 +10,48 @@
 
 @implementation Contact
 
-@synthesize uuid, name, title, email, phone, twitterId;
+@synthesize uuid = _uuid, 
+            name = _name, 
+            title = _title,
+            email = _email,
+            phone = _phone,
+            twitterId = _twitterId;
 
--(id)initWithName:(NSString*)newName 
-         andPhone:(NSString*)newPhone
-         andTitle:(NSString*)newTitle 
-         andEmail:(NSString*)newEmail
-     andTwitterId:(NSString*)newTwitterId 
+-(id)initWithId:(NSString*)uuid
 {    
     self = [super init];
+    _uuid = uuid;
+    _name = _title = _email = _phone = _twitterId = @"";
+    return self;
+}
+
+- (NSComparisonResult)compare:(Contact*)otherObject 
+{
+    return [_name compare:otherObject.name];
+}
+
+- (void)encodeWithCoder:(NSCoder*)encoder;
+{
+    [encoder encodeObject:_uuid forKey:@"uuid"];
+    [encoder encodeObject:_name forKey:@"name"];
+    [encoder encodeObject:_title forKey:@"title"];
+    [encoder encodeObject:_email forKey:@"email"];
+    [encoder encodeObject:_phone forKey:@"phone"];
+    [encoder encodeObject:_twitterId forKey:@"twitterId"];
+}
+
+- (id)initWithCoder:(NSCoder*)decoder;
+{
+    if (![super init]) {
+        return nil;
+    }
     
-    NSString *newUuid = [[NSProcessInfo processInfo] globallyUniqueString];
-    self.uuid = newUuid;
-    self.name = newName;
-    self.phone = newPhone;
-    self.title = newTitle;
-    self.email = newEmail;
-    self.twitterId = newTwitterId;
+    _uuid = [decoder decodeObjectForKey:@"uuid"];
+    _name = [decoder decodeObjectForKey:@"name"];
+    _title = [decoder decodeObjectForKey:@"title"];
+    _email = [decoder decodeObjectForKey:@"email"];
+    _phone = [decoder decodeObjectForKey:@"phone"];
+    _twitterId = [decoder decodeObjectForKey:@"twitterId"];
     
     return self;
 }
