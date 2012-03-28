@@ -11,17 +11,13 @@
 
 @implementation DetailViewController
 
-@synthesize detailNameField = _detailDescriptionLabel_name;
-@synthesize detailTitleField = _detailDescriptionLabel_title;
-@synthesize detailEmailField = _detailDescriptionLabel_email;
-@synthesize detailPhoneField = _detailDescriptionLabel_phone;
-@synthesize detailTwitterIdField = _detailDescriptionLabel_twitterId;
-
+@synthesize detailNameField = _detailNameField;
+@synthesize detailTitleField = _detailTitleField;
+@synthesize detailEmailField = _detailEmailField;
+@synthesize detailPhoneField = _detailPhoneField;
+@synthesize detailTwitterIdField = _detailTwitterIdField;
 @synthesize detailScrollView = _detailScrollView;
-
 @synthesize contact = _contact;
-
-#pragma mark - View lifecycle
 
 -(void)viewDidLoad
 {
@@ -34,34 +30,13 @@
     [super viewWillAppear:animated];
     if (_contact) {
         _contact = [[ContactRepository singleton] readContact:[_contact uuid]];
-        self.detailNameField.text = _contact.name;
-        self.detailTitleField.text = _contact.title;
-        self.detailEmailField.text = _contact.email;
-        self.detailPhoneField.text = _contact.phone;
-        self.detailTwitterIdField.text = _contact.twitterId;
+        _detailNameField.text = _contact.name;
+        _detailTitleField.text = _contact.title;
+        _detailEmailField.text = _contact.email;
+        _detailPhoneField.text = _contact.phone;
+        _detailTwitterIdField.text = _contact.twitterId;
     }
 }
-
-#pragma mark - Split view
-
-- (void)splitViewController:(UISplitViewController*)splitController 
-     willHideViewController:(UIViewController*)viewController 
-          withBarButtonItem:(UIBarButtonItem*)barButtonItem 
-       forPopoverController:(UIPopoverController*)popoverController 
-{
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
-    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-    
-}
-
-- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    // Called when the view is shown again in the split view, invalidating the button and popover controller.
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    
-}
-
-#pragma mark - Outlets
 
 - (IBAction)onEditContact:(id)sender 
 {
