@@ -67,8 +67,7 @@ static NSString* DATABASE_FILE_PATH = nil;
 -(void)commit 
 {
     NSData* rawData = [NSKeyedArchiver archivedDataWithRootObject:_database];
-    BOOL result = [rawData writeToFile:DATABASE_FILE_PATH atomically:YES];
-    NSLog(@"Commit: %@", result ? @"YES" : @"NO");
+    [rawData writeToFile:DATABASE_FILE_PATH atomically:YES];
 }
 
 -(NSArray*)sortedContacts 
